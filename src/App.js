@@ -78,14 +78,10 @@ class App extends Component {
     });
   }
 
-  filterQuery = () =>{
+  filterQuery = () => {
     const filteredPokemons = this.state.pokemons.filter(item =>{
       const pokeName = item.name;
-      if(pokeName.includes(this.state.query)){
-        return true;
-      } else{
-        return false;
-      }
+      return pokeName.includes(this.state.query.toLowerCase());
     });
     return filteredPokemons;
   }
