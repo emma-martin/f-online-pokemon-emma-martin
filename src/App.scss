@@ -29,7 +29,9 @@
   min-width: 180px;
 }
 
-
+.pokemon__name{
+  text-transform: capitalize;
+}
 .pokemon__types{
   list-style: none;
   display: inline;

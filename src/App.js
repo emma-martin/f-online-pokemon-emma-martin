@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import "./App.scss";
 import { getPokemons } from "./services/pokemonService";
+import Filter from "./components/Filter";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -93,12 +94,8 @@ class App extends Component {
       <div className="App">
         <header className="app__header">
           <div className="app__header-container">
-            <h1 className="app__tittle">Pokemon List</h1> 
-            <input type="text" 
-                  className="app__input" 
-                  placeholder="Search Pokemons by name"
-                  onChange={this.getQuery}
-                  />
+            <h1 className="app__tittle">Pokemon List</h1>
+            <Filter getQuery={this.getQuery}/>
           </div>
           
         </header>
