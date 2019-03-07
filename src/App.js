@@ -5,11 +5,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokemons: []
+      pokemons: this.retrieveLocalStorate()
     };
   }
 
   componentDidMount() {
+    this.fetchPokemons();
+  }
+
+  fetchPokemons = () =>{
     getPokemons()
       .then(data => {
         const pokeUrl = data.results.map(item => {
@@ -34,10 +38,26 @@ class App extends Component {
               this.setState({
                 pokemons: pokeArr
               });
+              this.setLocalStorage(this.state.pokemons);
             });
         }
       })
       .catch(err => console.log(err));
+  }
+
+  setLocalStorage(data){
+    localStorage.setItem('pokeData', JSON.stringify(data));
+  }
+
+  retrieveLocalStorate(){
+    const pokeData = localStorage.getItem('pokeData');
+    if(!pokeData){
+      this.fetchPokemons();
+      return [];
+    }
+    else {
+      return JSON.parse(pokeData);
+    }
   }
 
   render() {
@@ -49,9 +69,9 @@ class App extends Component {
         </header>
         <main className="main">
           <ul className="app__list">
-            {pokemons.map(item => {
+            {pokemons.map((item, index) => {
               return (
-                <li key={item.id} className="app__list-item">
+                <li key={index} className="app__list-item">
                   <div className="pokemon">
                     <img src={item.img} alt={item.name} />
                     <div className="pokemon__id">ID / {item.id}</div>
