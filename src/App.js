@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-const ENDPOINT = 'https://pokeapi.co/api/v2/pokemon/';
+import {getPokemons} from './services/pokemonService';
 class App extends Component {
   constructor(props){
     super(props);
@@ -11,8 +11,7 @@ class App extends Component {
 
   }
   getPokemonList(){
-    fetch(ENDPOINT)
-      .then(response => response.json())
+      getPokemons()
       .then(data => {
         this.setState({
           results: data.results
