@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./App.scss";
 import { getPokemons } from "./services/pokemonService";
 import Filter from "./components/Filter";
+import PokeList from "./components/PokeList";
 
 class App extends Component {
   constructor(props) {
@@ -55,7 +56,6 @@ class App extends Component {
               this.setLocalStorage(pokeArr);
             });
         }
-        
       })
       .catch(err => console.log(err));
   }
@@ -101,24 +101,8 @@ class App extends Component {
           
         </header>
         <main className="main">
-          <ul className="app__list">
-            {filterPokemons.map((item, index) => {
-              return (
-                <li key={index} id={item.id} className="app__list-item">
-                  <div className="pokemon">
-                    <img src={item.img} alt={item.name} />
-                    <div className="pokemon__id">ID / {item.id}</div>
-                    <h2 className="pokemon__name">{item.name}</h2>
-                    {item.type.map((type, index) => {
-                      return (
-                          <span key={index} className="pokemon__types">{type}</span>
-                      );
-                    })}
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+          <PokeList filterPokemons={filterPokemons}/>
+          
         </main>
         
       </div>
