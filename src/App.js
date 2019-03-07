@@ -14,10 +14,10 @@ class App extends Component {
     const pokeData = localStorage.getItem('pokeData');
     if(!pokeData){
       console.log('NOPOKE');
+      // this.setState({
+      //   pokemons: []
+      // })
       this.fetchPokemons();
-      this.setState({
-        pokemons: []
-      })
     }
     else {
       console.log('SIPOKE');
@@ -69,6 +69,10 @@ class App extends Component {
     localStorage.setItem('pokeData', JSON.stringify(data));
   }
 
+
+
+
+
   render() {
     const { pokemons } = this.state;
     return (
@@ -80,7 +84,7 @@ class App extends Component {
           <ul className="app__list">
             {pokemons.map((item, index) => {
               return (
-                <li key={index} className="app__list-item">
+                <li key={index} id={item.id} className="app__list-item">
                   <div className="pokemon">
                     <img src={item.img} alt={item.name} />
                     <div className="pokemon__id">ID / {item.id}</div>
