@@ -6,7 +6,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokemons: []
+      pokemons: [],
+      query: ''
     };
   }
 
@@ -70,19 +71,44 @@ class App extends Component {
   }
 
 
+  getQuery = (event) => {
+    const userQuery = event.currentTarget.value;
+    this.setState({
+      query: userQuery
+    });
+  }
 
+  filterQuery = () =>{
+    const filteredPokemons = this.state.pokemons.filter(item =>{
+      const pokeName = item.name;
+      if(pokeName.includes(this.state.query)){
+        return true;
+      } else{
+        return false;
+      }
+    });
+    return filteredPokemons;
+  }
 
 
   render() {
-    const { pokemons } = this.state;
+    const filterPokemons = this.filterQuery();
     return (
       <div className="App">
-        <header className="header">
-          <h1 className="app__tittle">Pokemon List</h1>
+        <header className="app__header">
+          <div className="app__header-container">
+            <h1 className="app__tittle">Pokemon List</h1> 
+            <input type="text" 
+                  className="app__input" 
+                  placeholder="Search Pokemons by name"
+                  onChange={this.getQuery}
+                  />
+          </div>
+          
         </header>
         <main className="main">
           <ul className="app__list">
-            {pokemons.map((item, index) => {
+            {filterPokemons.map((item, index) => {
               return (
                 <li key={index} id={item.id} className="app__list-item">
                   <div className="pokemon">
