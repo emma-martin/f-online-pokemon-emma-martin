@@ -1,0 +1,24 @@
+
+.app__tittle{
+  padding: 40px;
+}
+
+.app__list{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.app__list-item{
+  border: 1px solid black;
+  margin: 20px auto;
+  padding: 20px;
+  min-width: 180px;
+}
+
+
+.pokemon__types{
+  list-style: none;
+  display: inline;
+  padding-right: 4px;
+}
