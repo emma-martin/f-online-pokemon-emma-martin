@@ -12,7 +12,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    
       getPokemons()
       .then(data => {
         this.setState({
