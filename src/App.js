@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import "./App.scss";
 import { getPokemons } from "./services/pokemonService";
@@ -5,59 +6,67 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokemons: this.retrieveLocalStorate()
+      pokemons: []
     };
   }
 
   componentDidMount() {
-    this.fetchPokemons();
+    const pokeData = localStorage.getItem('pokeData');
+    if(!pokeData){
+      console.log('NOPOKE');
+      this.fetchPokemons();
+      this.setState({
+        pokemons: []
+      })
+    }
+    else {
+      console.log('SIPOKE');
+      this.setState({
+        pokemons: JSON.parse(pokeData)
+      })
+    }
   }
 
   fetchPokemons = () =>{
     getPokemons()
       .then(data => {
+        console.log('FEEEEEEETCHING');
         const pokeUrl = data.results.map(item => {
           return item.url;
         });
+        const pokeArr = [];
         for (let i = 0; i < pokeUrl.length; i++) {
           fetch(pokeUrl[i])
             .then(response => response.json())
             .then(dataUrl => {
-              const pokeType = [];
-              for (let j = 0; j < dataUrl.types.length; j++) {
-                pokeType.push(dataUrl.types[j].type["name"]);
-              }
               const pokemon = {
                 name: dataUrl.name,
                 id: dataUrl.id,
                 img: dataUrl.sprites.front_default,
-                type: pokeType
+                type: this.getPokeTypes(dataUrl.types)
               };
-              const pokeArr = this.state.pokemons;
               pokeArr.push(pokemon);
               this.setState({
                 pokemons: pokeArr
               });
-              this.setLocalStorage(this.state.pokemons);
+              this.setLocalStorage(pokeArr);
             });
         }
+        
       })
       .catch(err => console.log(err));
   }
 
-  setLocalStorage(data){
-    localStorage.setItem('pokeData', JSON.stringify(data));
+  getPokeTypes(dataPokeTypes){
+    const pokeTypeNames = [];
+    for (let j = 0; j < dataPokeTypes.length; j++) {
+      pokeTypeNames.push(dataPokeTypes[j].type["name"]);
+    }
+    return pokeTypeNames;
   }
 
-  retrieveLocalStorate(){
-    const pokeData = localStorage.getItem('pokeData');
-    if(!pokeData){
-      this.fetchPokemons();
-      return [];
-    }
-    else {
-      return JSON.parse(pokeData);
-    }
+  setLocalStorage(data){
+    localStorage.setItem('pokeData', JSON.stringify(data));
   }
 
   render() {
