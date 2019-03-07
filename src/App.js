@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./App.scss";
 import { getPokemons } from "./services/pokemonService";
 import Filter from "./components/Filter";
+
 class App extends Component {
   constructor(props) {
     super(props);
