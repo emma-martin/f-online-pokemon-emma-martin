@@ -81,11 +81,11 @@ class App extends Component {
   }
 
   filterQuery = () => {
-    const filteredPokemons = this.state.pokemons.filter(item =>{
+    const {pokemons, query} = this.state;
+    return pokemons.filter(item =>{
       const pokeName = item.name;
-      return pokeName.includes(this.state.query.toLowerCase());
+      return pokeName.includes(query.toLowerCase());
     });
-    return filteredPokemons;
   }
 
 
