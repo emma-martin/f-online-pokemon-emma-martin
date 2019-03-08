@@ -91,12 +91,16 @@ class App extends Component {
 
   render() {
     const filterPokemons = this.filterQuery();
+    const {query} = this.state;
     return (
       <div className="App">
         <header className="app__header">
           <div className="app__header-container">
             <h1 className="app__tittle">Pokemon List</h1>
-            <Filter getQuery={this.getQuery}/>
+            <Filter 
+              getQuery={this.getQuery}
+              nameValue={query}
+            />
           </div>
           
         </header>

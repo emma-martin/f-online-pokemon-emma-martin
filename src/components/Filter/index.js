@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 
 class Filter extends Component {
     render() { 
-        const {getQuery} = this.props;
+        const {getQuery, nameValue} = this.props;
         return (
             <div className="app__filter">
-                <input type="text"
+                <input 
+                    type="text"
                     className="app__input"
                     placeholder="Search Pokemons by name"
                     onChange={getQuery}
+                    value={nameValue}
                 />
             </div>
         );
@@ -19,7 +21,8 @@ class Filter extends Component {
 
 
 Filter.propTypes = {
-    getQuery: PropTypes.func.isRequired
+    getQuery: PropTypes.func.isRequired,
+    nameValue: PropTypes.string.isRequired
 }
 
 
