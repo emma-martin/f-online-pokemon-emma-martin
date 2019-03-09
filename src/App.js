@@ -4,13 +4,15 @@ import "./App.scss";
 import { getPokemons } from "./services/pokemonService";
 import Filter from "./components/Filter";
 import PokeList from "./components/PokeList";
+import { Spinner } from "./components/Spinner";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       pokemons: [],
-      query: ''
+      query: '',
+      isLoading: true
     };
   }
 
@@ -18,9 +20,6 @@ class App extends Component {
     const pokeData = localStorage.getItem('pokeData');
     if(!pokeData){
       console.log('NOPOKE');
-      // this.setState({
-      //   pokemons: []
-      // })
       this.fetchPokemons();
     }
     else {
@@ -28,7 +27,9 @@ class App extends Component {
       this.setState({
         pokemons: JSON.parse(pokeData)
       })
-    }
+    };
+      setTimeout(() => this.setState({isLoading: false}), 2000);
+
   }
 
   fetchPokemons = () =>{
@@ -105,7 +106,8 @@ class App extends Component {
           
         </header>
         <main className="main">
-          <PokeList filterPokemons={filterPokemons}/>
+          {this.state.isLoading ? <Spinner /> : <PokeList filterPokemons={filterPokemons}/> }
+          
           
         </main>
         
