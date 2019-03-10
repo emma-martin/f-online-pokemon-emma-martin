@@ -1,3 +1,8 @@
+Catch 'em all! Or, at least, the first 25 pokemons shown.
+
+Pending to polish this readme, patience is a virtue.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
