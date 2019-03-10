@@ -21,11 +21,13 @@ class PokeList extends Component {
                                     </div>
                                     <div className="pokemon__info">
                                         <h2 className="pokemon__name">{item.name}</h2>
+                                        <div className="pokemon__types">
                                             {item.type.map((type, index) => {
                                                 return (
-                                                    <span key={index} className="pokemon__types">{type}</span>
+                                                    <span key={index} className="pokemon__type">{type}</span>
                                                 );
                                             })}
+                                        </div>
                                     </div>
                                 </div>
                             </li>

@@ -9,7 +9,9 @@
   .list-item{
     border: 1px solid grey;
     margin: 20px;
-    min-width: 180px;
+    // min-width: 180px;
+    width: 220px;
+    height: 220px;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0,0,0,0.08), 
     0 2px 4px rgba(0,0,0,0.10);
@@ -24,9 +26,8 @@
   }
 }
 
-.pomekon__container{
-    display: flex;
-    align-content: flex-start;
+.pokemon__container{
+    height: 100%;
 }
 
 .pokemon__bg{
@@ -34,11 +35,12 @@
     display: flex;
     justify-content: center;
     position: relative;
+    height: 60%;
 }
 
 .pokemon__id{
     position: absolute;
-    top: 75%;
+    top: 83%;
     left: 0%;
     padding: 2px 8px;
     background-color: rgb(197, 197, 197);
@@ -49,14 +51,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 40%;
 }
   .pokemon__name{
     text-transform: capitalize;
-    padding-left: 5px;
+    padding-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
+
   .pokemon__types{
-      flex-wrap: wrap;
-      max-width: 60px;
+    padding-left: 15px;
+  }
+  .pokemon__type{
+    text-transform: uppercase;
+    flex-wrap: wrap;
+    max-width: 60px;
     list-style: none;
     display: inline;
     padding: 2px 4px;
