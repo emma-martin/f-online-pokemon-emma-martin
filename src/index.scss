@@ -1,29 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:700|Open+Sans:300,400');
+
+
+$color-bg: #FFE52D;
+$color-bg-input: #FFFCEC;
+$color-border: #b3b2b2;
+$poke-bg: #DFDFDF;
+$poke-id: #D1CECA;
+$poke-id-letter: #7C6046;
+$poke-type: #886D55;
+
+
+$font-main: 'Lato', sans-serif;
+$font-second: 'Open Sans', sans-serif;
+$font-main-size: 1.4em;
+$font-second-size: 1em;
 body {
   box-sizing: border-box;
-  background-color: rgba(252, 236, 9, 0.945);
+  background-color: $color-bg;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  &:before {
-    position: absolute;
-		margin: -2em;
-    padding: 2em;
-		border-radius: 50%;
-		box-shadow: 0 0 7px #b53;
-		background: black;
-    content: ''
-  }
-  &:nth-child {
-    position: absolute;
-		margin: -2em;
-    padding: 2em;
-		border-radius: 50%;
-		box-shadow: 0 0 7px #b53;
-		background: black;
-    content: ''
-  }
+  font-family: $font-second;
+  font-size: $font-second-size;
+
+    //black corner
+    &:before {
+      position: absolute;
+      bottom: 0;
+      margin: -2em;
+      padding: 2em;
+      border-radius: 50%;
+      box-shadow: 0 0 7px #b53;
+      background: red;
+      content: ''
+    }
+    &:nth-child {
+      position: absolute;
+      bottom: 0;
+      margin: -2em;
+      padding: 2em;
+      border-radius: 50%;
+      box-shadow: 0 0 7px #b53;
+      background: red;
+      content: ''
+    }
 }
+
+
+

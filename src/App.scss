@@ -1,9 +1,16 @@
+@import './index.scss';
 
+.App{
+  overflow-x: hidden;
+}
 .app__header-container{
   width: 80%;
   margin: auto;
   padding: 2.8em;
 }
 
-
+.main{
+  max-width: 70%;
+  margin: auto;
+}
 
