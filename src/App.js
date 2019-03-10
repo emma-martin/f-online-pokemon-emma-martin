@@ -51,6 +51,7 @@ class App extends Component {
                 type: this.getPokeTypes(dataUrl.types)
               };
               pokeArr.push(pokemon);
+              pokeArr.sort((a,b)=>a.id - b.id);
               this.setState({
                 pokemons: pokeArr
               });
@@ -60,6 +61,8 @@ class App extends Component {
       })
       .catch(err => console.log(err));
   }
+
+
 
   getPokeTypes(dataPokeTypes){
     const pokeTypeNames = [];
