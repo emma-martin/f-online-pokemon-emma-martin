@@ -97,7 +97,6 @@ class App extends Component {
       <div className="App">
         <header className="app__header">
           <div className="app__header-container">
-            <h1 className="app__tittle">Pokemon List</h1>
             <Filter 
               getQuery={this.getQuery}
               nameValue={query}

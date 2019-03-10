@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import './index.scss';
 class Filter extends Component {
     render() { 
         const {getQuery, nameValue} = this.props;
         return (
-            <div className="app__filter">
+            <div className="filter">
                 <input 
                     type="text"
-                    className="app__input"
+                    className="filter__input"
                     placeholder="Search Pokemons by name"
                     onChange={getQuery}
                     value={nameValue}
