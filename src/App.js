@@ -47,11 +47,6 @@ class App extends Component {
               fetch(dataUrl.species.url)
                 .then(response => response.json())
                 .then(dataSpecies =>{
-                //   if(dataSpecies.evolves_from_species && dataSpecies.evolves_from_species.hasOwnProperty("name")){
-                //     console.log(dataSpecies.evolves_from_species.name)
-                //   }
-                // });
-                  
               const pokemon = {
                 name: dataUrl.name,
                 id: dataUrl.id,
@@ -74,7 +69,6 @@ class App extends Component {
 
   getPokeEvolution(dataPokeEvol){
     if(dataPokeEvol && dataPokeEvol.hasOwnProperty("name")){
-      console.log(dataPokeEvol.name)
       return dataPokeEvol.name;
     }
   }
