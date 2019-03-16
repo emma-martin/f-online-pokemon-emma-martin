@@ -44,11 +44,20 @@ class App extends Component {
           fetch(pokeUrl[i])
             .then(response => response.json())
             .then(dataUrl => {
+              fetch(dataUrl.species.url)
+                .then(response => response.json())
+                .then(dataSpecies =>{
+                //   if(dataSpecies.evolves_from_species && dataSpecies.evolves_from_species.hasOwnProperty("name")){
+                //     console.log(dataSpecies.evolves_from_species.name)
+                //   }
+                // });
+                  
               const pokemon = {
                 name: dataUrl.name,
                 id: dataUrl.id,
                 img: dataUrl.sprites.front_default,
-                type: this.getPokeTypes(dataUrl.types)
+                type: this.getPokeTypes(dataUrl.types),
+                evolution: this.getPokeEvolution(dataSpecies.evolves_from_species)
               };
               pokeArr.push(pokemon);
               pokeArr.sort((a, b)=> a.id - b.id);
@@ -56,13 +65,19 @@ class App extends Component {
                 pokemons: pokeArr
               });
               this.setLocalStorage(pokeArr);
-            });
+
+            });})
         }
       })
       .catch(err => console.log(err));
   }
 
-
+  getPokeEvolution(dataPokeEvol){
+    if(dataPokeEvol && dataPokeEvol.hasOwnProperty("name")){
+      console.log(dataPokeEvol.name)
+      return dataPokeEvol.name;
+    }
+  }
 
   getPokeTypes(dataPokeTypes){
     const pokeTypeNames = [];

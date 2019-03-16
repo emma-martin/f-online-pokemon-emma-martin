@@ -28,6 +28,19 @@ class PokeList extends Component {
                                                 );
                                             })}
                                         </div>
+                                        
+                                        {!!item.evolution ? 
+
+                                            <div className="pokemon__evolves">
+                                                Evolves from: 
+                                                <span>{item.evolution}</span>
+                                            </div> 
+                                            : null
+                                        }
+                                            
+                                        
+
+
                                     </div>
                                 </div>
                             </li>
